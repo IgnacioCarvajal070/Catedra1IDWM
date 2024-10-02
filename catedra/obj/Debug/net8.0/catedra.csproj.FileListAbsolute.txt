@@ -142,3 +142,5 @@ C:\Users\SsPom\OneDrive\Escritorio\1catedraIDW\catedra\obj\Debug\net8.0\refint\c
 C:\Users\SsPom\OneDrive\Escritorio\1catedraIDW\catedra\obj\Debug\net8.0\catedra.pdb
 C:\Users\SsPom\OneDrive\Escritorio\1catedraIDW\catedra\obj\Debug\net8.0\catedra.genruntimeconfig.cache
 C:\Users\SsPom\OneDrive\Escritorio\1catedraIDW\catedra\obj\Debug\net8.0\ref\catedra.dll
+C:\Users\SsPom\OneDrive\Escritorio\1catedraIDW\catedra\obj\Debug\net8.0\catedra.sourcelink.json
+C:\Users\SsPom\OneDrive\Escritorio\1catedraIDW\catedra\bin\Debug\net8.0\Bogus.dll

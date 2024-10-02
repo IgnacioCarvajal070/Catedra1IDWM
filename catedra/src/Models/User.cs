@@ -7,12 +7,13 @@ namespace catedra.src.Models
 {
       public class User
     {
-        public string rut {get;set; }
-        public string nombre {get;set; }
-        public string correo {get;set; }
+        public int Id {get;set; }
+        public int Rut {get;set; }
+        public string Nombre {get;set; } = string.Empty;
+        public string Correo {get;set; } = string.Empty;
 
-        public string genero {get;set; }
+        public string Genero {get;set; } = string.Empty;
 
-        public string fecha {get;set; }
+        public string Fecha {get;set; } = string.Empty;
     }
 }

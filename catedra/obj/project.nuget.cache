@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "VdcMrAzIynM=",
+  "dgSpecHash": "tXjzeBjZA6A=",
   "success": true,
   "projectFilePath": "C:\\Users\\SsPom\\OneDrive\\Escritorio\\1catedraIDW\\catedra\\catedra.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\SsPom\\.nuget\\packages\\bogus\\35.6.1\\bogus.35.6.1.nupkg.sha512",
     "C:\\Users\\SsPom\\.nuget\\packages\\dotnetenv\\3.1.1\\dotnetenv.3.1.1.nupkg.sha512",
     "C:\\Users\\SsPom\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\SsPom\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.8\\microsoft.aspnetcore.authentication.jwtbearer.8.0.8.nupkg.sha512",
