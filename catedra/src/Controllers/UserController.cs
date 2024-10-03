@@ -19,27 +19,27 @@ namespace catedra.src.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreateUser([FromBody] CreateUserDto createUserDto)
+        public IActionResult CreateUser([FromBody] UserDTO userDto)
         {
             if (!ModelState.IsValid){
                 return BadRequest(ModelState);
             }
 
-            if (_context.Users.Any(u => u.Rut == createUserDto.Rut))
+            if (_context.Users.Any(u => u.Rut == userDto.Rut))
             {
             return Conflict(new { message = "El RUT ya existe." });
             }
-            if (!DateTime.TryParse(createUserDto.Fecha, out DateTime FechaPars) || FechaPars >= DateTime.Now)
+            if (!DateTime.TryParse(userDto.Fecha, out DateTime FechaPars) || FechaPars >= DateTime.Now)
             {
             return BadRequest(new { message = "La fecha de nacimiento debe ser válida y menor a la fecha actual." });
             }
         
             var user = new User
             {
-            Rut = createUserDto.Rut,
-            Nombre = createUserDto.nombre,
-            Correo = createUserDto.Correo,
-            Genero = createUserDto.Genero,
+            Rut = userDto.Rut,
+            Nombre = userDto.Nombre,
+            Correo = userDto.Correo,
+            Genero = userDto.Genero,
             Fecha = FechaPars.ToString("yyyy-MM-dd")
             };
 

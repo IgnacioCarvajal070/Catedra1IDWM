@@ -14,7 +14,7 @@ namespace catedra.src.Dtos
         [Required]
         [MaxLength(100, ErrorMessage = "El nombre debe ser mas corto que 100 caracteres")]
         [MinLength(3, ErrorMessage = "El nombre no puede ser inferior a 3 caracteres")]
-        public string nombre { get; set; } = string.Empty;
+        public string Nombre { get; set; } = string.Empty;
 
         [Required]
         public string Correo { get; set; } = string.Empty;
