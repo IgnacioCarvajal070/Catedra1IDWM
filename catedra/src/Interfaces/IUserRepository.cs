@@ -12,6 +12,6 @@ namespace catedra.src.Interfaces
         Task<User?> GetUserById(int id);
         Task<User> CreateUser(User user);
         Task UpdateUser(User user);
-        Task<User> DeleteUser(int id);
+        Task DeleteUser(User user);
     }
 }

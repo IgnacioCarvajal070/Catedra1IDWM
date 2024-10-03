@@ -91,9 +91,22 @@ namespace catedra.src.Controllers
             userSearch.Correo = userDto.Correo;
             userSearch.Genero = userDto.Genero;
             userSearch.Fecha = userDto.Fecha;
-            
+
             await _userRepository.UpdateUser(userSearch);
             return Ok(new { message = "Usuario actualizado exitosamente." });
             }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteUser(int id)
+        {
+            var user = await _userRepository.GetUserById(id);
+            if (user == null)
+            {
+                return NotFound(new { message = "Usuario no encontrado." });
+            }
+
+            await _userRepository.DeleteUser(user);
+            return Ok(new { message = "Usuario eliminado exitosamente." });
+        }
     }
 }

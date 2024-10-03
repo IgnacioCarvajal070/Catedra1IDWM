@@ -26,9 +26,10 @@ namespace catedra.src.Repository
             return user;
         }
 
-        public Task<User> DeleteUser(int id)
+        public async Task DeleteUser(User user)
         {
-            throw new NotImplementedException();
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<List<User>> GetAllUsers()
