@@ -36,14 +36,15 @@ namespace catedra.src.Repository
             return await _context.Users.ToListAsync();
         }
 
-        public Task<User> GetUserById(int id)
+        public async Task<User?> GetUserById(int id)
         {
-            throw new NotImplementedException();
+            return await _context.Users.FindAsync(id)!;
         }
 
-        public Task<User> UpdateUser(User user)
+        public async Task UpdateUser(User user)
         {
-            throw new NotImplementedException();
+            _context.Users.Update(user);
+            await _context.SaveChangesAsync();
         }
     }
 }

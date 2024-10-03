@@ -60,6 +60,40 @@ namespace catedra.src.Controllers
             }
 
             return Ok(users);
-    }
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateUser(int id, [FromBody] UserDTO userDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var userSearch = await _userRepository.GetUserById(id);
+            if (userSearch == null)
+            {
+                return NotFound(new { message = "Usuario no encontrado." });
+            }
+
+            
+            if (_context.Users.Any(u => u.Rut == userDto.Rut && u.Id != id))
+            {
+                return Conflict(new { message = "El RUT ya existe para otro usuario." });
+            }
+
+            if (!DateTime.TryParse(userDto.Fecha, out DateTime FechaPars) || FechaPars >= DateTime.Now)
+            {
+                return BadRequest(new { message = "La fecha de nacimiento debe ser válida y menor a la fecha actual." });
+            }
+            userSearch.Rut = userDto.Rut;
+            userSearch.Nombre = userDto.Nombre;
+            userSearch.Correo = userDto.Correo;
+            userSearch.Genero = userDto.Genero;
+            userSearch.Fecha = userDto.Fecha;
+            
+            await _userRepository.UpdateUser(userSearch);
+            return Ok(new { message = "Usuario actualizado exitosamente." });
+            }
     }
 }
