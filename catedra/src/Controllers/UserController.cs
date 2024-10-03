@@ -6,6 +6,7 @@ using catedra.src.Data;
 using Microsoft.AspNetCore.Mvc;
 using catedra.src.Dtos;
 using catedra.src.Models;
+using catedra.src.Interfaces;
 namespace catedra.src.Controllers
 {
     [ApiController]
@@ -13,13 +14,16 @@ namespace catedra.src.Controllers
     public class UserController: ControllerBase
     {
         private readonly ApplicationDBContext _context;   
-        public UserController(ApplicationDBContext context)
+        private readonly IUserRepository _userRepository;
+
+        public UserController(ApplicationDBContext context, IUserRepository userRepository)
         {
             _context = context;
+            _userRepository = userRepository;
         }
 
         [HttpPost]
-        public IActionResult CreateUser([FromBody] UserDTO userDto)
+        public async Task<IActionResult> CreateUser([FromBody] UserDTO userDto)
         {
             if (!ModelState.IsValid){
                 return BadRequest(ModelState);
@@ -36,16 +40,13 @@ namespace catedra.src.Controllers
         
             var user = new User
             {
-            Rut = userDto.Rut,
-            Nombre = userDto.Nombre,
-            Correo = userDto.Correo,
-            Genero = userDto.Genero,
-            Fecha = FechaPars.ToString("yyyy-MM-dd")
+                Rut = userDto.Rut,
+                Nombre = userDto.Nombre,
+                Correo = userDto.Correo,
+                Genero = userDto.Genero,
+                Fecha = userDto.Fecha
             };
-
-            _context.Users.Add(user);
-            _context.SaveChanges();
-            
+            await _userRepository.CreateUser(user);
             return CreatedAtAction(nameof(CreateUser), "Usuario creado exitosamente");
         }
     }
