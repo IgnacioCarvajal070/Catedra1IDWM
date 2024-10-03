@@ -49,5 +49,17 @@ namespace catedra.src.Controllers
             await _userRepository.CreateUser(user);
             return CreatedAtAction(nameof(CreateUser), "Usuario creado exitosamente");
         }
+        [HttpGet]
+        public async Task<IActionResult> GetUsers()
+        {
+            var users = await _userRepository.GetAllUsers();
+
+            if (users == null || !users.Any())
+            {
+                return NotFound(new { message = "No se encontraron usuarios." });
+            }
+
+            return Ok(users);
+    }
     }
 }

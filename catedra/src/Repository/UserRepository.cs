@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using catedra.src.Data;
 using catedra.src.Interfaces;
 using catedra.src.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace catedra.src.Repository
 {
@@ -30,9 +31,9 @@ namespace catedra.src.Repository
             throw new NotImplementedException();
         }
 
-        public Task<List<User>> GetAllUsers()
+        public async Task<List<User>> GetAllUsers()
         {
-            throw new NotImplementedException();
+            return await _context.Users.ToListAsync();
         }
 
         public Task<User> GetUserById(int id)
